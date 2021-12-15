@@ -5,6 +5,7 @@ This repository contains the end-to-end code to process PCAP files and train the
 > Analyzing the Feasibility and Generalizability of
 Fingerprinting Internet of Things Devices
 
+The paper can be found at this [link](https://anupamdas.org/paper/PETS2022.pdf)
 
 
 ## Setup
