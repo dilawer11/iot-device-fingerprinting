@@ -1,0 +1,22 @@
+{
+    "output_path": "results/multidatasetcommonclassifier",
+    "train_dataset_paths": ["datasets/sample"],
+    "test_dataset_paths": ["datasets/sample"],
+    "n_dict": 0,
+    "n_tls_tcp": 500,
+    "n_udp": 500,
+    "n_dns": 0,
+    "n_ntp": 500,
+    "n_protocol": 1000,
+    "one_hot_encode": true,
+    "devices": "all",
+    "runs": 5,
+    "label_col": "Device",
+    "simple_groups": "all",
+    "dict_groups": "all",
+    "errors": false,
+    "data_size": 1.0,
+    "features": false,
+    "drop_non_iot": false,
+    "print_details": true
+}
