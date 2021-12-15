@@ -2,8 +2,7 @@
 
 ## Introduction
 This repository contains the end-to-end code to process PCAP files and train the models used in the PETS'22 paper: 
-> Analyzing the Feasibility and Generalizability of
-Fingerprinting Internet of Things Devices
+> Analyzing the Feasibility and Generalizability of Fingerprinting Internet of Things Devices. Dilawer Ahmed, Anupam Das and Fareed Zaffar. Proceedings on Privacy Enhancing Technologies (PoPETs), 2022
 
 The paper can be found at this [link](https://anupamdas.org/paper/PETS2022.pdf)
 
