@@ -31,7 +31,7 @@ You can also build and run your own Docker container from the Dockerfile. There 
 
 If you want everything strictly within the Docker container and not mount any volumes (maybe to just test code on sample). This requires that datasets are placed in the datasets subdirectory on the project base directory. If this is not the case you can alter the Dockerfile accordingly. After datasets have been correctly setup you can run the following command in the project base directory
 
-`sudo docker build -t iot-device-fingerprinting`
+`sudo docker build -t iot-device-fingerprinting .`
 
 `sudo docker run -it iot-device-fingerprinting`
 
