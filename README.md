@@ -46,9 +46,9 @@ After this you can run the following command to build
 
 `sudo docker build -t iot-device-fingerprinting .`
 
-Docker can then be started by using the following command (with correct paths):
+Docker container can then be run by using the following command:
 
-`sudo docker run -it -v /path/to/datasets:/datasets -v /path/to/results:/results iot-device-fingerprinting`
+`sudo docker run -it -v "$(pwd)"/datasets:/datasets -v "$(pwd)"/results:/results iot-device-fingerprinting`
 
 The command above mounts the datasets and results to the docker to save the results across docker runs.
 
