@@ -11,8 +11,8 @@ COPY src src
 COPY extras extras
 COPY requirements.txt requirements.txt
 
+RUN pip3 install -r requirements.txt
+
 # Delete the two lines below to mount these volumes instead
 COPY datasets datasets
 COPY results results
-
-RUN pip3 install -r requirements.txt
