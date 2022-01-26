@@ -27,7 +27,7 @@ class FeatureSelector():
    
     # Temp 
     __combinedSeries = None
-    def __init__(self, simple_groups='all', n_dict=0, n_tls_tcp=0, n_dns=0, n_udp=0, n_ntp=0, dict_groups='all', n_protocol=0, print_details=True, one_hot_encode=False, transform_callback=None):
+    def __init__(self, simple_groups='all', dict_groups='all', n_dict=0, n_tls_tcp=500, n_dns=0, n_udp=500, n_ntp=500, n_protocol=1000, one_hot_encode=True, print_details=True, transform_callback=None):
         self.dv_dict_features = dict()
         self.n_dict_ = n_dict
         self.n_tls_tcp_ = n_tls_tcp
