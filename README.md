@@ -13,7 +13,7 @@ There are many different setup options. The 3 we tested are briefly described be
 ### Option 1. Using pre-built docker image
 
 You can use the provided Docker image to start a container. This docker image also contains the *sample* dataset (more details on this below) and can be used to test the configurations. The Docker image can be downloaded from [here](https://drive.google.com/file/d/1mxcOgxhht5LIeBYMS2i6nrrd3PsE02DP/view?usp=sharing). The SHA256 Id of the docker image is:
-`sha256:5dc31e02a6444dbde7be4c91285eba330cd05fee4f81b5cbbb37dcff59656096`
+`sha256:0a8cd174f997350bd67e676e896d34c0e5eb5bbb1738cd860cb620ec71e16497`
 
 To load the Docker image use the following command
 
@@ -24,6 +24,8 @@ The SHA256 hash can be verified by running the following command:
 
 To run the docker container use:
 `sudo docker run -it iot-device-fingerprinting`
+
+Note you would need to setup all the datasets (except *sample*) datasets as described in the datasets section below.
 
 ### Option 2. Building docker image from Dockerfile
 
@@ -186,5 +188,34 @@ Output of these should be by default under results folder. The files are the res
 
 ## Post-processing (Tables and Plots)
 
-There are multitudes of possible ways to interpret any result and create different plots with it. A few basic examples are given below to help you get started. To create a device
+There are multitudes of possible ways to interpret any result and create different plots with it. A few basic examples are given below to help you get started. To create a device. We have already included the plotting or table libraries we used to create all the plots. Our examples cover different types of figures and tables to serve as an example of different types.
 
+### Confusion Matrix Plot
+Confusion Matrices relies on the correct and errors during prediction from the classifier. After you have trained the model e.g the MultiDatasetCombinedClassifier as  (using the default configuration paths) you can then use the results to plot a Confusion Matix as follows:
+
+To train the classifier as above (you can skip this step if you have already trained the model and the results are ready to be processed)
+`python3 src/scripts/ModelTrainingScript.py --combined`
+
+To generate CM using the PostProcessing.py script
+`python3 src/scripts/PostProcessing.py -i /results/multidatasetcombinedclassifier --cm`
+
+It will generate the results using CM files from the provided directory (The input directory can be changed if the results are in a different location). The result by default will be saved in the same directory in form of a PDF file named "CM.pdf". You can change this by providing a seperate save path
+
+### Group Feature Importance Table
+Group feature importance is to see the feature importance of a group as a whole based on the individual features used by the training model. When the classifier is trained it will dump the feature importances for each run (as long a 'features: true' is set in the config file). We can use these feature importances to get the group feature importances for all model training runs.
+
+To train the classifier as above (you can skip this step if you have already trained the model and the results are ready to be processed)
+`python3 src/scripts/ModelTrainingScript.py --combined`
+
+To generate the Group Feature importance table using the PostProcessing.py script
+`python3 src/scripts/PostProcessing.py -i /results/multidatasetcombinedclassifier --group-fi`
+
+It will generate the results using feature importances files from the provided directory (The input directory can be changed if the results are in a different location). The result by default will be saved in the same directory in form of a CSV file. You can change this by providing a seperate save path
+
+### t-SNE Scatter Plot for datasets
+t-SNE scatter plots can help visualize the device samples from the given dataset. These require the feature data (with the run-time feature serializer to select and serialize the multi-valued features). We don't need the model to be trained for this but require the feature data from the datasets.
+
+To generate the t-SNE scatter plot for the *sample* dataset
+`python3 src/scripts/PostProcessing.py -i /datasets/sample --tsne`
+
+It will generate the results using dataset path provided (dataset path can be replaced to generate the plot for other datasets). The result by default will be saved in the same input directory in form of a PDF file. You can change this by providing a seperate save path
