@@ -162,7 +162,7 @@ class ModelTraining:
         return counts
         
     @staticmethod
-    def getMetrics(y_train_true:'Series', y_train_pred:'Series', y_test_true:'Series', y_test_pred:'Series', average:'str'='macro') -> 'tst_acc, trn_acc, prs, rcl, fsc': 
+    def getMetrics(y_train_true:pd.Series, y_train_pred:pd.Series, y_test_true:pd.Series, y_test_pred:pd.Series, average:str='macro') -> tuple: 
         if average is None:
             average = 'macro'
         if (y_train_true is not None) and (y_train_pred is not None):
@@ -962,7 +962,7 @@ class FingerprintingDevicesExp(ModelTraining):
             print(f'WARNING: Test Data will not be loaded in {self.runType}')
         
         return train_data, None
-    def run(self, resultPath, runs=10):
+    def run(self, resultPath, runs=10, features=False, errors=False):
         self.selectDevices()
         data,_ = self.loadData()
         all_devices_list = data[self.labelCol].unique()
@@ -1027,7 +1027,7 @@ class FingerprintingDevicesExp(ModelTraining):
                 for train_index, test_index in kf.split(data_devices):
                     train_data = data_devices.iloc[train_index]
                     test_data = data_devices.iloc[test_index]
-                    tst_acc, trn_acc, tst_prs, tst_rcl, tst_fsc = self.main(train_data, test_data, return_metrics=True, print_metrics=False, errors=False, features=False)
+                    tst_acc, trn_acc, tst_prs, tst_rcl, tst_fsc = self.main(train_data, test_data, return_metrics=True, print_metrics=False, errors=errors, features=features)
                     cv_metrics['trn_acc'].append(trn_acc)
                     cv_metrics['tst_acc'].append(tst_acc)
                     cv_metrics['tst_prs'].append(tst_prs)

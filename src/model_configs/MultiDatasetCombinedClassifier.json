@@ -1,5 +1,5 @@
 {
-    "output_path": "results/multidatasetcombinedclassifier",
+    "output_path": "results/multidatasetcombinedclassifier/R",
     "train_dataset_paths": ["datasets/sample"],
     "test_dataset_paths": [],
     "n_dict": 0,
@@ -16,5 +16,6 @@
     "plot_cm": true,
     "errors": true,
     "label_col": "Device",
+    "features": true,
     "cv": 5
 }

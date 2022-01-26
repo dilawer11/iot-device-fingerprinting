@@ -1,5 +1,6 @@
 import sys
 import os
+from venv import create
 
 import iotpackage.ModelTraining as mt
 import iotpackage.FeatureSelection as fsec
@@ -27,12 +28,26 @@ def loadConfig(config_name, config_dir=None):
     config_path = os.path.join(config_dir, config_name)
     return loadConfigFromPath(config_path)
 
+def getParentDir(path):
+    return os.path.split(path)[0]
+
+def parentDirExists(path):
+    parentDir = getParentDir(path)
+    return os.path.exists(parentDir)
+
+def createParentDir(path):
+    parentDir = getParentDir(path)
+    os.makedirs(parentDir)
+    return
+
 def runFingerprintingDevicesExp(config=''):
     if config != '':
         config_data = loadConfigFromPath(config)
     else:
         config_data = loadConfig('FingerprintingDevicesExpConfig.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running FingerprintingDevicesExp')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
 
@@ -44,7 +59,7 @@ def runFingerprintingDevicesExp(config=''):
                                 n_protocol=config_data['n_protocol'],
                                 one_hot_encode=config_data['one_hot_encode'])
     model = mt.FingerprintingDevicesExp(train_datasets=config_data['train_dataset_paths'], fs=fs, devices=config_data['devices'])
-    model.run(result_path, runs=config_data['runs'])
+    model.run(result_path, runs=config_data['runs'], features=config_data['features'], errors=config_data['errors'])
 
 def runMultiDatasetCombinedClassifier(config=''):
     if config != '':
@@ -52,6 +67,8 @@ def runMultiDatasetCombinedClassifier(config=''):
     else:
         config_data = loadConfig('MultiDatasetCombinedClassifier.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running MultiDatasetCombinedClassifier')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
     fs = fsec.FeatureSelector(  simple_groups=config_data['simple_groups'],
@@ -64,7 +81,7 @@ def runMultiDatasetCombinedClassifier(config=''):
                                 n_protocol=config_data['n_protocol'],
                                 one_hot_encode=config_data['one_hot_encode'])
     model = mt.MultiDatasetCombinedClassifier(fs=fs, train_datasets=config_data['train_dataset_paths'], cv=config_data['cv'], label_col=config_data['label_col'])
-    model.run(result_path, errors=config_data['errors'], plot_cm=config_data['plot_cm'], runs=config_data['runs'])
+    model.run(result_path, errors=config_data['errors'], plot_cm=config_data['plot_cm'], runs=config_data['runs'], features=config_data['features'])
 
 def runKnownUnknownClassifier(config=''):
     if config != '':
@@ -72,6 +89,8 @@ def runKnownUnknownClassifier(config=''):
     else:
         config_data = loadConfig('KnownUnknownClassifier.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running KnownUnknownClassifier')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
     fs = fsec.FeatureSelector(  simple_groups=config_data["simple_groups"],
@@ -84,7 +103,7 @@ def runKnownUnknownClassifier(config=''):
                                 n_protocol=config_data['n_protocol'],
                                 one_hot_encode=config_data['one_hot_encode'])
     model = mt.KnownUnknownClassifier(fs=fs, train_datasets=config_data['train_dataset_paths'], cv=config_data['cv'], label_col=config_data['label_col'])
-    model.run(result_path, runs=config_data['runs'], split_type=config_data['split_type'], non_iot_filter=config_data['non_iot_filter'])
+    model.run(result_path, runs=config_data['runs'], split_type=config_data['split_type'], non_iot_filter=config_data['non_iot_filter'], features=config_data['features'])
     
 def runMultiDatasetCommonClassifier(config=''):
     if config != '':
@@ -92,6 +111,8 @@ def runMultiDatasetCommonClassifier(config=''):
     else:
         config_data = loadConfig('MultiDatasetCommonClassifier.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running MultiDatasetCommonClassifier')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
 
@@ -120,6 +141,8 @@ def runMultiDatasetCombinedClassifierIoTvsNonIoT(config=''):
     else:
         config_data = loadConfig('MultiDatasetCombinedClassifierIoTvsNonIoT.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running MultiDatasetCombinedClassifierIoTvsNonIoT')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
     
@@ -151,6 +174,8 @@ def runTargetVsNonTargetClassifier(config=''):
     else:
         config_data = loadConfig('TargetVsNonTargetClassifier.json')
     result_path = os.path.join(IOTBASE, config_data['output_path'])
+    if not parentDirExists(result_path): createParentDir(result_path)
+
     if VERBOSE: print(f'Running TargetVsNonTargetClassifier')
     if VERBOSE: print(f"result_path: {result_path}", flush=True)
     

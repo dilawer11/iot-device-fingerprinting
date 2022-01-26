@@ -1,5 +1,5 @@
 {
-    "output_path": "results/knownunknownclassifier",
+    "output_path": "results/knownunknownclassifier/R",
     "train_dataset_paths": ["datasets/sample"],
     "test_dataset_paths": [],
     "simple_groups": "all",
@@ -15,5 +15,6 @@
     "runs": 5,
     "label_col": "Device",
     "cv": 5,
-    "non_iot_filter": true
+    "non_iot_filter": true,
+    "features": false
 }

@@ -1,5 +1,5 @@
 {
-    "output_path": "results/multidatasetcommonclassifier",
+    "output_path": "results/multidatasetcommonclassifier/R",
     "train_dataset_paths": ["datasets/sample"],
     "test_dataset_paths": ["datasets/sample"],
     "n_dict": 0,

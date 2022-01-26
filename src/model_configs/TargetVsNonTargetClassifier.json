@@ -1,5 +1,5 @@
 {
-    "output_path": "results/targetvsnontargetclassifier",
+    "output_path": "results/targetvsnontargetclassifier/R",
     "train_dataset_paths": ["datasets/sample"],
     "test_dataset_paths": [],
     "n_dict": 0,
