@@ -196,7 +196,7 @@ There are 5 different types of models that we used in our work.
     This model takes training datasets and target devices as input and splits the devices equally among known and unknown target devices. It trains using the known target and portion on non-target device. This model by default uses configuration file located at "src/model_configs/TargetVsNonTargetClassifier.json"
 
     Example Usage:
-    `python3 src/scripts/ModelTrainingScript.py --fingerprint`
+    `python3 src/scripts/ModelTrainingScript.py --target`
 
 - Fingerprinting Devices
     This model fingerprints the individual devices. This model by default uses configuration file located at "src/model_configs/FingerprintingDevicesExpConfig.json"
@@ -204,8 +204,6 @@ There are 5 different types of models that we used in our work.
     Example Usage:
     
     `python3 src/scripts/ModelTrainingScript.py --fingerprint`
-
-Output of these should be by default under results folder. The files are the results based on the configuration used. They can be confusion matrices (plot_cm) and the misclassifications (errors) and top_features (features). Depending on a specific model it can have additional parameters that can be tuned. Some are highly specialized for one corner case experiment in our work. Most, however, are general
 
 ## Post-processing (Tables and Plots)
 
