@@ -12,7 +12,7 @@ There are many different setup options. The 3 we tested are briefly described be
 
 ### Option 1. Using pre-built docker image
 
-You can use the provided Docker image to start a container. This docker image also contains the *sample* dataset (more details on this below) and can be used to test the configurations. The Docker image can be downloaded from [here](https://drive.google.com/file/d/1n4kXuYKDDsx1EWZrtAqe_G7l5o1CTkCy/view?usp=sharing). The SHA256 Id of the docker image is:
+You can use the provided Docker image to start a container. This docker image also contains the *sample* dataset (more details on this below) and can be used to test the configurations. The Docker image can be downloaded from [here](https://drive.google.com/file/d/1n4kXuYKDDsx1EWZrtAqe_G7l5o1CTkCy/view?usp=sharing). You can also use *gdown* utility to download from Google Drive via CLI. Instructions for *gdown* are provided below in the Dataset section of this README. The SHA256 Id of the docker image is:
 `sha256:0a8cd174f997350bd67e676e896d34c0e5eb5bbb1738cd860cb620ec71e16497`
 
 To load the Docker image use the following command:
@@ -87,6 +87,7 @@ We used many different datasets for our experiments and evaluations. Many of the
 
 We used RAW PCAP files and then processed them ourselves and all the scripts we used are available in the code. We created multiple different scripts to convert from one form to another. We convert PCAP to CSV, which cleans the data portion of the packet and only extracts the fields we need. It takes up less diskspace and is easier and faster to work with using python libraries such as pandas compared to pcaps. We then use this CSV to extract features using multiprocessing which is stored as seperate '.pkl' files and then combines the result and creates other required files.
 
+
 ## Adding datasets
 
 You would need two things to add a dataset to this project
@@ -135,6 +136,23 @@ The above commands assumes zip source file for others you can *extract* them sep
 - **Adding additional datasets**
 
     Additional datasets can be added. Follow the current directory structure and add the PCAP files in the Datasets/{dataset_name}/RAW folder and then pass this name to the pipefile for processing of data
+
+### Using *gdown* to download
+
+To download the docker container or our datasets from the Google Drive. *gdown* can be used. To install and use *gdown* follow the instructions below (Note these may change later)
+
+To install *gdown*:
+
+`pip3 install gdown`
+
+To download a file from gdown use the id provided by Google Drive for that file as follows:
+
+`gdown --id {ID}`
+
+The ID can be extracted from the URL of the file. For example our sample dataset has the following URL https://drive.google.com/file/d/1sUq2e2Y104trFMhj700Lb9DluWld8RW4/view?usp=sharing and the ID in this case would be 1sUq2e2Y104trFMhj700Lb9DluWld8RW4. So to download the sample dataset the following command can be used:
+
+`gdown --id 1sUq2e2Y104trFMhj700Lb9DluWld8RW4`
+
 
 # Pipeline
 
