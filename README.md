@@ -6,6 +6,10 @@ This repository contains the end-to-end code to process PCAP files and train the
 
 The paper can be found at this [link](https://anupamdas.org/paper/PETS2022.pdf)
 
+This work is a collaboration between Lahore University of Management Sciences (LUMS) and North Carolina State University (NCSU).
+
+## Contact Information
+You can reach out to the corresponding author of this paper (Dilawer Ahmed) at `dahmed2 at ncsu dot edu`
 ## Setup
 
 There are many different setup options. The 3 we tested are briefly described below.
