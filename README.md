@@ -9,7 +9,7 @@ The paper can be found at this [link](https://anupamdas.org/paper/PETS2022.pdf)
 This work is a collaboration between Lahore University of Management Sciences (LUMS) and North Carolina State University (NCSU).
 
 ## Contact Information
-You can reach out to the corresponding author of this paper (Dilawer Ahmed) at `dahmed2 at ncsu dot edu`
+You can reach out to the corresponding author of this paper (Dilawer Ahmed) at `dahmed2 at ncsu dot edu` or vist this [webpage](https://dilawer11.github.io) for more info on the author
 ## Setup
 
 There are many different setup options. The 3 we tested are briefly described below.
@@ -91,6 +91,21 @@ We used many different datasets for our experiments and evaluations. Many of the
 
 We used RAW PCAP files and then processed them ourselves and all the scripts we used are available in the code. We created multiple different scripts to convert from one form to another. We convert PCAP to CSV, which cleans the data portion of the packet and only extracts the fields we need. It takes up less diskspace and is easier and faster to work with using python libraries such as pandas compared to pcaps. We then use this CSV to extract features using multiprocessing which is stored as seperate '.pkl' files and then combines the result and creates other required files.
 
+## Datasets links
+
+- **Sample Dataset (Recommended for testing code)**: This dataset is a limited subset of *Our2* dataset. It is only recommended for evaluating the code as it runs much faster than other datasets and requires less memory. It can be downloaded from [here](https://drive.google.com/file/d/1sUq2e2Y104trFMhj700Lb9DluWld8RW4/view?usp=sharing). To setup this dataset follow instructions above
+
+- **NCSU IoT Lab Datasets (Our and Our2)**: The datasets can be downloaded from [here](https://drive.google.com/drive/folders/1WUVK9BQFCZCq-9xTjmT22SOC9MIyW8hG?usp=sharing).
+
+- **YourThings Scorecard (YT)**: The dataset can be downloaded from [here](https://yourthings.info/data/). 
+
+- **UNSW IoT Traces (UNSW)**: The dataset can be downloaded from [here](https://iotanalytics.unsw.edu.au/iottraces).
+
+- **Mon(IoT)r Lab Dataset (NE_US and NE_UK)**: The dataset can be accessed from [here](https://moniotrlab.ccis.neu.edu/imc19dataset/).
+
+- **PingPong Dataset (PP)**: The dataset can be accessed from [here](https://athinagroup.eng.uci.edu/projects/pingpong/data/).
+
+- **HomeSnitch Datasets (HS and HS2)**: The datasets were made available to us upon request. Most recent version can be found from this [link](https://research.fit.edu/iot/)    
 
 ## Adding datasets
 
@@ -121,25 +136,10 @@ To copy the device_mappings.csv file to correct place:
 
 `cp {dataset_device_mappings}.csv /path/to/projectbase/datasets/{dataset_name}/device_mappings.csv`
 
-The above commands assumes zip source file for others you can *extract* them seperately and then move/copy accordingly
+The above commands assumes zip source file for others you can *extract* them seperately and then move/copy accordingly.
 
-- **Sample Dataset (Recommended for testing code)**: This dataset is a limited subset of *Our2* dataset. It is only recommended for evaluating the code as it runs much faster than other datasets and requires less memory. It can be downloaded from [here](https://drive.google.com/file/d/1sUq2e2Y104trFMhj700Lb9DluWld8RW4/view?usp=sharing). To setup this dataset follow instructions above
+Additional datasets, apart from ones mentioned above, can be added as well. Follow the current directory structure and add the PCAP files in the Datasets/{dataset_name}/RAW folder and then pass this name to the pipefile for processing of data
 
-- **NCSU IoT Lab Datasets (Our and Our2)**: The datasets can be downloaded from [here](https://drive.google.com/drive/folders/1WUVK9BQFCZCq-9xTjmT22SOC9MIyW8hG?usp=sharing).
-
-- **YourThings Scorecard (YT)**: The dataset can be downloaded from [here](https://yourthings.info/data/). 
-
-- **UNSW IoT Traces (UNSW)**: The dataset can be downloaded from [here](https://iotanalytics.unsw.edu.au/iottraces).
-
-- **Mon(IoT)r Lab Dataset (NE_US and NE_UK)**: The dataset can be accessed from [here](https://moniotrlab.ccis.neu.edu/imc19dataset/).
-
-- **PingPong Dataset (PP)**: The dataset can be accessed from [here](https://athinagroup.eng.uci.edu/projects/pingpong/data/).
-
-- **HomeSnitch Datasets (HS and HS2)**: The datasets were made available to us upon request. Most recent version can be found from this [link](https://research.fit.edu/iot/)
-
-- **Adding additional datasets**
-
-    Additional datasets can be added. Follow the current directory structure and add the PCAP files in the Datasets/{dataset_name}/RAW folder and then pass this name to the pipefile for processing of data
 
 ### Using *gdown* to download
 
