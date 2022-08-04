@@ -682,12 +682,12 @@ class FeatureExtracter:
         
         
         try:
-            in_ackflagSum = outgoingPackets['tcpACK'].sum()
-            in_synflagSum = outgoingPackets['tcpSYN'].sum()
-            in_finflagSum = outgoingPackets['tcpFIN'].sum()
-            in_rstflagSum = outgoingPackets['tcpRST'].sum()
-            in_pshflagSum = outgoingPackets['tcpPSH'].sum()
-            in_urgflagSum = outgoingPackets['tcpURG'].sum()
+            in_ackflagSum = incomingPackets['tcpACK'].sum()
+            in_synflagSum = incomingPackets['tcpSYN'].sum()
+            in_finflagSum = incomingPackets['tcpFIN'].sum()
+            in_rstflagSum = incomingPackets['tcpRST'].sum()
+            in_pshflagSum = incomingPackets['tcpPSH'].sum()
+            in_urgflagSum = incomingPackets['tcpURG'].sum()
             
             totalSum = in_ackflagSum + in_synflagSum + in_finflagSum + in_rstflagSum + in_pshflagSum + in_urgflagSum
             
