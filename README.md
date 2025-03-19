@@ -93,9 +93,9 @@ We used RAW PCAP files and then processed them ourselves and all the scripts we 
 
 ## Datasets links
 
-- **Sample Dataset (Recommended for testing code)**: This dataset is a limited subset of *Our2* dataset. It is only recommended for evaluating the code as it runs much faster than other datasets and requires less memory. It can be downloaded from [here](https://drive.google.com/file/d/1sUq2e2Y104trFMhj700Lb9DluWld8RW4/view?usp=sharing). To setup this dataset follow instructions above
+- **Sample Dataset (Recommended for testing code)**: This dataset is a limited subset of *Our2* dataset. It is only recommended for evaluating the code as it runs much faster than other datasets and requires less memory. It can be downloaded from [here](https://privacy-datahub.csc.ncsu.edu/publication/ahmed-pets-2021/). To setup this dataset follow instructions above
 
-- **NCSU IoT Lab Datasets (Our and Our2)**: The datasets can be downloaded from [here](https://drive.google.com/drive/folders/1WUVK9BQFCZCq-9xTjmT22SOC9MIyW8hG?usp=sharing).
+- **NCSU IoT Lab Datasets (Our and Our2)**: The datasets can be downloaded from [here](https://privacy-datahub.csc.ncsu.edu/publication/ahmed-pets-2021/).
 
 - **YourThings Scorecard (YT)**: The dataset can be downloaded from [here](https://yourthings.info/data/). 
 
